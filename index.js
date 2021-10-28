@@ -18,7 +18,7 @@ function listener(vehicle, changes) {
   changes.changedProperties.forEach((prop) => {
     console.log("Modified Attributes: " + `${prop}: ${vehicle[prop]}`);
   });
-}
+};
 
 // Open a local realm file with default path & predefined Car schema
 try {
@@ -41,4 +41,4 @@ try {
     });
 } catch (err) {
   console.error("Failed to open the realm", err.message);
-}
+};
