@@ -1,3 +1,9 @@
+# Realm files
+*.realm
+*.realm.management/
+*.management
+*.lock
+
 # Logs
 logs
 *.log
