@@ -5,37 +5,34 @@ const Axles = {
   embedded: true,
   properties: {
     wheel: "string?",
-    pressure: "int?"
+    pressure: { type: "int?", default: 0 },
   },
 };
-
 
 // Realm Schema Definition
 const Vehicle = {
   name: "Vehicle",
   properties: {
-    vehicleIdentification: "{}",
-    //axles: {type: "list", objectType: Axles},
+    axles: "Axles",
     ambientAirTemperature: { type: "int", default: 0 },
-    mileage: { type: "int", default: 0 }
+    mileage: { type: "int", default: 0 },
   },
 };
-
 
 // Realm Object or Collection Change Listener
 function listener(vehicle, changes) {
   console.log(
-    `${changes.changedProperties.length} properties have been changed.`
+    `${changes.changedProperties.length} properties have been changed:`
   );
   changes.changedProperties.forEach((prop) => {
-    console.log("Modified Attributes: {" + `${prop}: ${vehicle[prop]}}`);
+    console.log("- " + `${prop}: ${vehicle[prop]}`);
   });
 }
 
 // Open a local realm file with default path & predefined Car schema
 try {
   const realm = Realm.open({
-    schema: [Vehicle],
+    schema: [Vehicle, Axles],
   })
     .then((realm) => {
       realm.write(() => {
@@ -44,8 +41,8 @@ try {
           vehicleIdentification: {
             vin: "XKDNF23SDF23666MND?",
             model: "X5",
-            brand: "BMW"
-          }
+            brand: "BMW",
+          },
         });
       });
       return vehicle;
@@ -56,6 +53,3 @@ try {
 } catch (err) {
   console.error("Failed to open the realm", err.message);
 }
-
-
-
