@@ -15,5 +15,3 @@ With MongoDB Realm's change notifications, device updates can easily be tracked 
 ![Source Code](/media/3_RealmStudio_CarCreated.png)
 ![Source Code](/media/4_RealmStudio_CarModified.png)
 ![Source Code](/media/5_Shell_ChangeModifications.png)
-
-
