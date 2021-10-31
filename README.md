@@ -13,7 +13,7 @@ With MongoDB Realm's change notifications, device updates can easily be tracked 
 
 ```node vehicle-shadow.js```
 
-```node shadow-update```
+```node shadow-update.js```
 
 
 ![Source Code](/media/0_VisualStudio_SourceCode.png)
