@@ -7,7 +7,7 @@ With MongoDB Realm's change notifications, device updates can easily be tracked 
 * [Install Realm Studio](https://docs.mongodb.com/realm/studio/)
 
 
-## Rund The Demo
+## Run The Demo (PICTURES TO BE UPDATED)
 
 ```docker-compose up```
 
