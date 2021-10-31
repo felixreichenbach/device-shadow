@@ -2,7 +2,7 @@
   "name": "vehicle-shadow",
   "version": "1.0.0",
   "description": "A MongoDB Realm vehicle shadow example",
-  "main": "index.js",
+  "main": "vehicle-shadow.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/felixreichenbach/vehicle-shadow#readme",
   "dependencies": {
+    "mqtt": "^4.2.8",
     "realm": "^10.9.1"
   },
   "devDependencies": {

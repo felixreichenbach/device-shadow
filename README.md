@@ -9,6 +9,13 @@ With MongoDB Realm's change notifications, device updates can easily be tracked 
 
 ## Rund The Demo
 
+```docker-compose up```
+
+```node vehicle-shadow.js```
+
+```node shadow-update```
+
+
 ![Source Code](/media/0_VisualStudio_SourceCode.png)
 ![Source Code](/media/1_RealmStudio_Empty.png)
 ![Source Code](/media/2_Shell_StartApp.png)

@@ -1,23 +1,8 @@
+const models = require('./models');
 const Realm = require("realm");
+var mqtt = require('mqtt');
 
-const Axles = {
-  name: "Axles",
-  embedded: true,
-  properties: {
-    wheel: "string?",
-    pressure: { type: "int?", default: 0 },
-  },
-};
-
-// Realm Schema Definition
-const Vehicle = {
-  name: "Vehicle",
-  properties: {
-    axles: "Axles",
-    ambientAirTemperature: { type: "int", default: 0 },
-    mileage: { type: "int", default: 0 },
-  },
-};
+var client  = mqtt.connect('mqtt://localhost:1883');
 
 // Realm Object or Collection Change Listener
 function listener(vehicle, changes) {
@@ -27,12 +12,13 @@ function listener(vehicle, changes) {
   changes.changedProperties.forEach((prop) => {
     console.log("- " + `${prop}: ${vehicle[prop]}`);
   });
+  client.publish('shadows', JSON.stringify(changes));
 }
 
 // Open a local realm file with default path & predefined Car schema
 try {
   const realm = Realm.open({
-    schema: [Vehicle, Axles],
+    schema: [models.Vehicle, models.Axles],
   })
     .then((realm) => {
       realm.write(() => {
@@ -53,3 +39,22 @@ try {
 } catch (err) {
   console.error("Failed to open the realm", err.message);
 }
+
+process.on('SIGINT', function() {
+  console.log("Caught interrupt signal");
+
+  try {
+    const realm = Realm.open({
+      schema: [models.Vehicle, models.Axles],
+    })
+    .then((realm) => {
+      realm.write(() => {
+        // Delete all objects from the realm.
+        realm.deleteAll();
+      });
+      process.exit();
+    })
+  } catch (err) {
+    console.error("Failed to open the realm", err.message);
+  }
+});

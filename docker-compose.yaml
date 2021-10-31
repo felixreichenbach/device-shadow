@@ -1,14 +1,14 @@
 version: "2.4"
 services:
-  realm:
-    build: ./realm
-    environment:
-        - REALM_APPID
-    depends_on:
-        - mqtt      
+  # realm:
+  #   build: ./realm
+  #   environment:
+  #       - REALM_APPID
+  #   depends_on:
+  #       - mqtt      
   mosquitto-mqtt:
     image: "eclipse-mosquitto"
     volumes:
-        - ./mqtt/config:/mosquitto/config/
+        - ./mosquitto-mqtt/:/mosquitto/config/
     ports:
         - "1883:1883"
