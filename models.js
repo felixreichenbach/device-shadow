@@ -1,10 +1,14 @@
 
-exports.Axles = {
-    name: "Axles",
+
+// Realm embedded objects
+exports.Engine = {
+    name: "Engine",
     embedded: true,
     properties: {
-      wheel: "string?",
-      pressure: { type: "int?", default: 0 },
+      cylinders: { type: "int?", default: 4 },
+      cc: { type: "int?", default: 0 },
+      rpm: { type: "int?", default: 0 },
+      running: { type: "bool", default: false }
     },
   };
 
@@ -14,9 +18,19 @@ exports.Axles = {
 exports.Vehicle = {
     name: "Vehicle",
     properties: {
-      axles: "Axles",
-      ambientAirTemperature: { type: "int", default: 0 },
-      mileage: { type: "int", default: 0 },
+      engine: { type: "Engine" },
+      vin: { type: "string?" },
+      model: { type: "string" },
+      miles: { type: "int", default: 0}
     },
   };
 
+
+  exports.Person = {
+    name: "Person",
+    properties: {
+      name: "string",
+      birthdate: "date?",
+      vehicles: "Vehicle[]"
+    }
+  };

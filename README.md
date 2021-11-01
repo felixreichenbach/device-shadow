@@ -6,6 +6,10 @@ With MongoDB Realm's change notifications, device updates can easily be tracked 
 * [Install npm / Realm SDK](https://docs.mongodb.com/realm/sdk/node/)
 * [Install Realm Studio](https://docs.mongodb.com/realm/studio/)
 
+## Demo Setup
+
+Create brand specific vin: [https://vingenerator.org/brand](https://vingenerator.org/brand)
+
 
 ## Run The Demo (PICTURES TO BE UPDATED)
 

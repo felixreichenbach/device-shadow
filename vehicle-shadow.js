@@ -18,23 +18,25 @@ function listener(vehicle, changes) {
 // Open a local realm file with default path & predefined Car schema
 try {
   const realm = Realm.open({
-    schema: [models.Vehicle, models.Axles],
+    schema: [models.Vehicle, models.Engine, models.Person],
   })
     .then((realm) => {
       realm.write(() => {
         vehicle = realm.create("Vehicle", {
-          miles: 0,
-          vehicleIdentification: {
-            vin: "XKDNF23SDF23666MND?",
-            model: "X5",
-            brand: "BMW",
-          },
+          vin: "5UXKR2C50E0H32137",
+          model: "X5",
+          engine: models.Engine,
+          miles: 0
+        });
+        person = realm.create("Person", {
+          name: "John Doe",
+          vehicles: [vehicle]
         });
       });
       return vehicle;
     })
     .then((vehicle) => {
-      vehicle.addListener(listener);
+      vehicle.engine.addListener(listener);
     });
 } catch (err) {
   console.error("Failed to open the realm", err.message);
@@ -45,7 +47,7 @@ process.on('SIGINT', function() {
 
   try {
     const realm = Realm.open({
-      schema: [models.Vehicle, models.Axles],
+      schema: [models.Vehicle, models.Engine, models.Person],
     })
     .then((realm) => {
       realm.write(() => {
