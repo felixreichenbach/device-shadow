@@ -21,7 +21,7 @@ exports.Vehicle = {
   },
 };
 
-// Person related to cars
+// Person related to n Vehicles
 exports.Person = {
   name: "Person",
   properties: {
