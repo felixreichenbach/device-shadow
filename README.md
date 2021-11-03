@@ -1,4 +1,4 @@
-# Device-Shadow MongoDB Realm Example
+# Vehicle-Shadow MongoDB Realm Example
 
 With MongoDB Realm's change notifications, device updates can easily be tracked and automatic notifications including only the attributes changed can be created and as an example be sent to the backend via MQTT or completely out of the box synchronized bidirectionally with Realm Sync!
 
@@ -11,7 +11,7 @@ With MongoDB Realm's change notifications, device updates can easily be tracked 
 Create brand specific vin: [https://vingenerator.org/brand](https://vingenerator.org/brand)
 
 
-## Run The Demo (PICTURES TO BE UPDATED)
+## Run The Demo (TO BE UPDATED)
 
 ```docker-compose up```
 
