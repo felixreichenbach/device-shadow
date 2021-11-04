@@ -1,4 +1,4 @@
-# Vehicle-Shadow MongoDB Realm Example
+# Vehicle-Shadow With MongoDB Realm
 
 With MongoDB Realm's change notifications, device updates can easily be tracked and automatic notifications including only the attributes changed can be created and as an example be sent to the backend via MQTT or completely out of the box synchronized bidirectionally with Realm Sync!
 
