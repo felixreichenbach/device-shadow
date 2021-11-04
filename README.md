@@ -1,6 +1,6 @@
 # Vehicle-Shadow With MongoDB Realm
 
-Leveraging object / document stores for [VSS](https://covesa.github.io/vehicle_signal_specification/introduction/overview/) data is the perfect combination.
+Object / document stores are the perfect match for [VSS](https://covesa.github.io/vehicle_signal_specification/introduction/overview/) data.
 
 MongoDB Atlas in combination with Realm provides an awesome foundation to build your distinct next generation customer experience! Realm DB and MongoDB Atlas make structuring of your VSS data easy and efficient.
 With the out of the box Realm Sync capabilities you can bi-directionaly synchronise vehicle state on field level and compressed, between vehicle, the backend and customer apps!
