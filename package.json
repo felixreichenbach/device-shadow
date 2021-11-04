@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/felixreichenbach/vehicle-shadow#readme",
   "dependencies": {
+    "bson": "^4.5.4",
     "mqtt": "^4.2.8",
     "realm": "^10.9.1"
   },
