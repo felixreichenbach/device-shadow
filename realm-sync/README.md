@@ -9,7 +9,6 @@
 **_NOTE:_**  I ran into issues with the latest node package and switched to 15.
 
 * [Install npm / Realm SDK](https://docs.mongodb.com/realm/sdk/node/)
-* [Install Realm Studio](https://docs.mongodb.com/realm/studio/)
 
 ## Demo Setup
 
