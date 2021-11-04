@@ -2,7 +2,8 @@
 
 Leveraging object / document stores for [VSS](https://covesa.github.io/vehicle_signal_specification/introduction/overview/) data is the perfect combination.
 
-MongoDB Atlas in combination with Realm provides an awesome foundation to build your distinct next generation customer experience! Realm DB and MongoDB Atlas make structuring of your data easy and Realm Sync provides out of the box, bi-directional synchronization capability on field level, including compression to synchronize only the delta of you shadow and helps reduce MNO cost and accelerate your application development.
+MongoDB Atlas in combination with Realm provides an awesome foundation to build your distinct next generation customer experience! Realm DB and MongoDB Atlas make structuring of your VSS data easy and efficient.
+With the out of the box Realm Sync capabilities you can bi-directionaly synchronise vehicle state on field level and compressed, between vehicle, the backend and customer apps!
 
 The demo is split into two parts:
 - Using out of the box Realm Sync to synchronise vehicle state with customer apps
