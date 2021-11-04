@@ -40,9 +40,11 @@ Start the customer app which will sync the vehicle shadow and set up a change li
 
 ```node customerApp.js```
 
-Connect with a MongoDB Shell
+Connect with a MongoDB Shell: 
 
-Run this command to trigger chances on the shadow instance:
+[Connect to MongoDB Atlas Database](https://docs.atlas.mongodb.com/connect-to-cluster/#use-the-connect-to-your-cluster-dialog-to-connect-to-your-cluster)
+
+Run this command to trigger changes on the shadow instance:
 
 ```db.Vehicle.updateOne({},{$set:{"miles": 200, "engine.cc":2}})```
 
