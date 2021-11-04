@@ -55,7 +55,7 @@ Run this command to trigger changes on the shadow instance:
 
 ```node vehicle-shadow-mqtt.js```
 
-```node shadow-update.js```
+```node addMiles-mqtt.js```
 
 
 ![Source Code](/media/0_VisualStudio_SourceCode.png)
