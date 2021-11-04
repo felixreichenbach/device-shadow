@@ -53,7 +53,7 @@ Run this command to trigger changes on the shadow instance:
 
 ```docker-compose up```
 
-```node vehicle-shadow.js```
+```node vehicle-shadow-mqtt.js```
 
 ```node shadow-update.js```
 
