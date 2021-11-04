@@ -7,7 +7,7 @@ VSS Specification: https://github.com/COVESA/vehicle_signal_specification/releas
 
 ## Prerequisits:
 
-**_NOTE:_**  I ran into issues with the latest node package and moved to 15.
+**_NOTE:_**  I ran into issues with the latest node package and switched to 15.
 
 * [Install npm / Realm SDK](https://docs.mongodb.com/realm/sdk/node/)
 * [Install Realm Studio](https://docs.mongodb.com/realm/studio/)
@@ -26,9 +26,10 @@ Create brand specific vin: [https://vingenerator.org/brand](https://vingenerator
 
 ### Run The Demo
 
-**_NOTE:_**  I ran into issues with the latest node package and moved to 15.
+**_NOTE:_**  I ran into issues with the latest node package and switched to 15.
 
 Start the vehicle instance which will create the shadow instance in MongoDB Atlas.
+
 ```node vehicleInstance.js```
 
 Start the customer app which will sync the vehicle shadow and set up a change listener.
