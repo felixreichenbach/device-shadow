@@ -1,9 +1,12 @@
 # Vehicle-Shadow With MongoDB Realm
 
-With MongoDB Realm's change notifications, device updates can easily be tracked and automatic notifications including only the attributes changed can be created and as an example be sent to the backend via MQTT or completely out of the box synchronized bidirectionally with Realm Sync!
+Leveraging object / document stores for [VSS](https://covesa.github.io/vehicle_signal_specification/introduction/overview/) data is the perfect combination.
 
+MongoDB Atlas in combination with Realm provides an awesome foundation to build your distinct next generation customer experience! Realm DB and MongoDB Atlas make structuring of your data easy and Realm Sync provides out of the box, bi-directional synchronization capability on field level, including compression to synchronize only the delta of you shadow and helps reduce MNO cost and accelerate your application development.
 
-VSS Specification: https://github.com/COVESA/vehicle_signal_specification/releases/
+The demo is split into two parts:
+- Using out of the box Realm Sync to synchronise vehicle state with customer apps
+- Easy straightforward MQTT integration through Realm change notifications to leverage preexisting connectivity or synchronize multiple realms on different ECUs onboard.
 
 ## Prerequisits:
 
