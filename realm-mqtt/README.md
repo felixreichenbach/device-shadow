@@ -1,3 +1,14 @@
+# Realm -> MQTT Integration
+
+This is a small example on how to use Realm change notifications to generate delta notifications, being sent via MQTT. This is an easy way to share data within the car between ECUs. Instead of mqtt a SOME/IP client library might be used the same way.
+
+## Prerequisits:
+
+**_NOTE:_**  I ran into issues with the latest node package and switched to 15.
+
+* [Install npm / Realm SDK](https://docs.mongodb.com/realm/sdk/node/)
+* [Install Realm Studio](https://docs.mongodb.com/realm/studio/)
+
 ## Run The MQTT Demo (TO BE UPDATED)
 
 Start the MQTT container:
