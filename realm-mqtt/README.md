@@ -9,7 +9,7 @@ This is a small example on how to use Realm change notifications to generate del
 * [Install npm / Realm SDK](https://docs.mongodb.com/realm/sdk/node/)
 * [Install Realm Studio](https://docs.mongodb.com/realm/studio/)
 
-## Run The MQTT Demo (TO BE UPDATED)
+## Run The MQTT Demo (SCREENSHOTS TO BE UPDATED)
 
 Start the MQTT container:
 
