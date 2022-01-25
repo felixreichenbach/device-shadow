@@ -3,6 +3,8 @@ const Realm = require("realm");
 const BSON = require("bson");
 const demoConfig = require("./demoConfig");
 
+const vehicleSchemas = [models.vehicleSchema, models.vehicle_attributesSchema, models.vehicle_signalsSchema, models.vehicle_signals_gps_coordsSchema];
+const app = new Realm.App({ id: demoConfig.RealmAppID });
 
 // Realm Object Change Listener
 function listener(vehicle, changes) {
@@ -10,58 +12,49 @@ function listener(vehicle, changes) {
     `${changes.changedProperties.length} properties have changed:`
   );
   changes.changedProperties.forEach((prop) => {
-    console.log("- " + `${prop}: ${vehicle[prop]}`);
+    console.log("- " + `${prop}: ${JSON.stringify(vehicle[prop])}`);
   });
 }
 
-const app = new Realm.App({ id: demoConfig.RealmAppID });
-
+// Main function
 async function run() {
-  await app.logIn(new Realm.Credentials.emailPassword( demoConfig.CProfile.username, demoConfig.CProfile.password ));
-  // When you open a synced realm, the SDK automatically automatically
-  // creates the realm on the device (if it didn't exist already) and
-  // syncs pending remote changes as well as any unsynced changes made
-  // to the realm on the device.
-  const realm = await Realm.open({
-    schema: [models.Vehicle, models.Engine],
-    sync: {
-      user: app.currentUser,
-      partitionValue: app.currentUser.customData.vin,
+  // Authenticate the customer
+  try {
+    const user = await app.logIn(new Realm.Credentials.emailPassword(demoConfig.CProfile.username, demoConfig.CProfile.password));
+    console.log("Successfully logged in: " + user.profile.email);
+  } catch (error) {
+    console.error("Failed to log in: ", error.message);
+  }
+
+  // Open Realm
+  try {
+    const realm = await Realm.open({
+      schema: vehicleSchemas,
+      sync: {
+        user: app.currentUser,
+        partitionValue: app.currentUser.customData.vin
+      }
+    });
+
+    // Query vehicle and add object change listener
+    const vehicle = realm.objects("vehicle");
+    if (vehicle.length > 0) {
+      vehicle[0].addListener(listener);
+    } else {
+      console.log("Vehicle needs to be registered first!");
+      process.exit();
     }
-  })
-  .then((realm) => {
-    const vehicle = realm.objects("Vehicle").filtered(`vin = "${app.currentUser.customData.vin}"`);
-    vehicle[0].addListener(listener);
-  });
-};
+  } catch (error) {
+    console.error("Open Realm failed: " + error.message)
+  };
+}
 
 run().catch(err => {
   console.error("Failed to open realm:", err);
-  console.log("--> Make sure vehicleInstance.js is up and running")
 });
 
-
-
-
-// Demo cleanup code
-
+// Demo shutdown and cleanup code
 process.on("SIGINT", function () {
-  console.log("Caught interrupt signal");
-  try {
-    const realm = Realm.open({
-      schema: [models.Vehicle, models.Engine],
-      sync: {
-        user: app.currentUser,
-        partitionValue: app.currentUser.id,
-      }
-    }).then((realm) => {
-      realm.write(() => {
-        // Delete all objects from the realm.
-        realm.deleteAll();
-      });
-      process.exit();
-    });
-  } catch (err) {
-    console.error("Failed to open the realm", err.message);
-  }
+  console.log("Shutdown initiated!");
+  process.exit();
 });
