@@ -1,15 +1,15 @@
 
 // Provide the Realm App ID
-exports.RealmAppID = "<< YOUR APP ID >>";
+exports.RealmAppID = "<<YOUR REALM APP ID>>";
 
 // Provide the configured customer profile
 exports.CProfile = {
-    username: "<< YOUR Customer Username >>",
-    password: "<< YOUR Customer Password >>"
+    username: "customer",
+    password: "customer"
 }
 
 // Provide the configured vehicle profile
 exports.VProfile = {
-    username: "<< YOUR Vehicle Username >>",
-    password: "<< YOUR Vehicle Password >>"
+    username: "BBCKR2C50E0H32137",
+    password: "BBCKR2C50E0H32137"
 }

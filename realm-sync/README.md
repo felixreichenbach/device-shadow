@@ -1,4 +1,7 @@
-# Implementation Specification
+# THIS README IS OUTDATED AND WILL BE UPDATED IN THE NEXT COUPLE OF DAYS
+
+
+## Implementation Specification
 
 - Sync Profiles: Each vehicle and each customer has its own sync profile (e.g. username/password)
 - Partition Key: Using VIN as partitioning key, only car specific data in one or multiple documents is synced

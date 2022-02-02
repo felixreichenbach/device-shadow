@@ -1,37 +1,38 @@
-// Engine nested in vehicle
-exports.Engine = {
-  name: "Engine",
+exports.vehicleSchema = {
+  name: 'vehicle',
+  properties: {
+    _id: 'objectId',
+    attributes: 'vehicle_attributes',
+    signals: 'vehicle_signals',
+  },
+  primaryKey: '_id',
+};
+
+exports.vehicle_attributesSchema = {
+  name: 'vehicle_attributes',
   embedded: true,
   properties: {
-    cylinders: { type: "int?", default: 4 },
-    cc: { type: "int?", default: 0 },
-    rpm: { type: "int?", default: 0 },
-    running: { type: "bool", default: false },
+    engine_ccm: 'int?',
+    model: 'string?',
+    weight: 'double?',
   },
 };
 
-// Vehicle embeds engine
-exports.Vehicle = {
-  name: "Vehicle",
+exports.vehicle_signalsSchema = {
+  name: 'vehicle_signals',
+  embedded: true,
   properties: {
-    _id: 'objectId',
-    vin: { type: "string" },
-    owner_id: "string?",
-    engine: { type: "Engine" },
-    model: { type: "string" },
-    miles: { type: "int", default: 0 },
+    fuel_level: 'int?',
+    gps_coords: 'vehicle_signals_gps_coords',
+    speed: 'double?',
   },
-  primaryKey: '_id',
 };
 
-// Person related to n Vehicles
-exports.Person = {
-  name: "Person",
+exports.vehicle_signals_gps_coordsSchema = {
+  name: 'vehicle_signals_gps_coords',
+  embedded: true,
   properties: {
-    _id: 'objectId',
-    name: "string",
-    birthdate: "date?",
-    vehicles: "Vehicle[]",
+    coordinates: 'double[]',
+    type: 'string?',
   },
-  primaryKey: '_id',
 };
