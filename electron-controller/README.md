@@ -12,6 +12,12 @@ ICON -> see further down in the guid how to make it skipped for the moment
 
 electron-is-dev needs to be installed not as decdependency!
 
+
+Package app:
+
+```npm run make```
+
+
 ## Create Application
 
 Success! Created react-controller at /Users/felixreichenbach/Documents/GitHub/vehicle-shadow/electron-controller/react-controller

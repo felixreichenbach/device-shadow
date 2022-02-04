@@ -1,7 +1,10 @@
+const { app, ipcMain, BrowserWindow } = require("electron");
 const path = require("path");
-
-const { app, BrowserWindow } = require("electron");
+const Realm = require("realm");
+const schema = require("./schema.js");
 const isDev = require("electron-is-dev");
+
+let win;
 
 // Conditionally include the dev tools installer to load React Dev Tools
 let installExtension, REACT_DEVELOPER_TOOLS;
@@ -24,13 +27,16 @@ if (require("electron-squirrel-startup")) {
 
 function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      //nodeIntegration: true, shouldn't be needed -> IPC renderer
+      preload: path.join(__dirname, "preload.js"),
     },
   });
+
+  // to prevent the Sync Connection from ending prematurely, start reading from stdin so we don't exit
+  process.stdin.resume();
 
   // and load the index.html of the app.
   // win.loadFile("index.html");
@@ -77,3 +83,45 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+
+////////////////////////
+// Realm Sync Part
+////////////////////////
+
+const vehicleSchemas = [
+  schema.vehicleSchema,
+  schema.vehicle_attributesSchema,
+  schema.vehicle_signalsSchema,
+  schema.vehicle_signals_gps_coordsSchema,
+];
+
+// create a new instance of the Realm.App
+const realmApp = new Realm.App({ id: "simple-vehicle-iqsqk" });
+async function run() {
+  // login with credentials
+  await realmApp.logIn(Realm.Credentials.emailPassword("customer", "customer"));
+  const realm = await Realm.open({
+    schema: vehicleSchemas,
+    path: "./realm/vehicleShadow.realm",
+    sync: {
+      user: realmApp.currentUser,
+      partitionValue: realmApp.currentUser.profile.email,
+    },
+  });
+}
+
+run().catch((err) => {
+  console.error("Failed to open realm:", err);
+});
+
+////////////////////////
+// Inter Process Communication IPCRenderer Part
+////////////////////////
+
+ipcMain.on("toMain", (event, args) => {
+  // Print received data from renderer
+  console.log("Received " + args + "from renderer!");
+  // Send data to renderer process
+  win.webContents.send("fromMain", "Hello World");
+});
